@@ -1,5 +1,6 @@
 # Importamos el módulo random para poder seleccionar preguntas de forma aleatoria
 import random
+import os
 
 # Diccionario principal que contiene todas las preguntas organizadas por temas
 preguntasTrivia = {
@@ -136,19 +137,19 @@ def mostrarPregunta(pregunta):
     if "opciones" in pregunta:
         print("\nOpciones:")
         # Enumeramos las opciones comenzando desde 1 para facilitar la selección
-        for idx, opcion in enumerate(pregunta["opciones"], start=1):
-            print(f"{idx}. {opcion}")
+        for indice, opcion in enumerate(pregunta["opciones"], start=1):
+            print(f"{indice}. {opcion}")
 
         while True:
             # Pedimos al usuario que ingrese el número de la opción que cree correcta
-            rta = input("Ingresa el número de la opción (0 para Salir): ")
+            rta = int(input("Ingresa el número de la opción (0 para Salir): "))
             
             # Si elige 0, retorna 0 para salir del juego
-            if rta == "0":
+            if rta == 0:
                 return 0
             
             # Si lo ingresado es un número y está dentro del rango válido...
-            elif rta.isdigit() and 1 <= int(rta) <= len(pregunta["opciones"]):
+            elif 1 <= int(rta) <= len(pregunta["opciones"]):
                 # Retornamos la opción seleccionada (en mayúscula inicial)
                 return pregunta["opciones"][int(rta) - 1].capitalize().strip()
             
@@ -190,6 +191,7 @@ def jugarTrivia():
         
         # Llamamos a la función que muestra la pregunta y devuelve la respuesta del usuario
         rtaUsuario = mostrarPregunta(pregunta)
+        os.system("cls")
         
         # Si el usuario responde '0', se sale del juego
         if rtaUsuario == 0 or rtaUsuario == "0":
