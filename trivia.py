@@ -37,7 +37,7 @@ preguntasTrivia = {
     ],
     "Deporte": [
         {
-            "pregunta": "En que deporte se utiliza una red, raqueta y pelota amarilla?",
+            "pregunta": "En que deporte se utiliza una red, raqueta con malla y pelota verde?",
             "respuesta": "Tenis"
         },
         {
@@ -150,7 +150,7 @@ def mostrarPregunta(pregunta):
             # Si lo ingresado es un número y está dentro del rango válido...
             elif rta.isdigit() and 1 <= int(rta) <= len(pregunta["opciones"]):
                 # Retornamos la opción seleccionada (en mayúscula inicial)
-                return pregunta["opciones"][int(rta) - 1].capitalize()
+                return pregunta["opciones"][int(rta) - 1].capitalize().strip()
             
             else:
                 # Si la entrada no es válida, mostramos mensaje de error
@@ -158,7 +158,7 @@ def mostrarPregunta(pregunta):
     
     else:
         # Si no hay opciones, pedimos una respuesta directa del usuario
-        rta = input("Tu respuesta: ").capitalize()
+        rta = input("Tu respuesta: ").capitalize().strip()
         return rta
 
 
@@ -197,7 +197,7 @@ def jugarTrivia():
             break
         
         # Convertimos la respuesta correcta a formato capitalizado
-        rtaCorrecta = pregunta["respuesta"].capitalize()
+        rtaCorrecta = pregunta["respuesta"].capitalize().strip()
 
         # Comparamos la respuesta del usuario con la correcta
         if rtaUsuario == rtaCorrecta:
