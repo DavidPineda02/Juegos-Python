@@ -217,7 +217,7 @@ def jugarTrivia():
     # Mostramos los resultados finales
     print("\n====================")
     print("Juego Terminado!")
-    print(f"Puntuación Final: {puntaje}/{totalPreguntas}")
+    print(f"Puntuación Final: {puntaje}/{totalPreguntas}\n")
     print(f"Insignias Ganadas ({len(insigniasGanadas)}):")
 
     if insigniasGanadas:
